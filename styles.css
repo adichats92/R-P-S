@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #f06, #f9f, #09f, #f06);
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.neon-text {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+}
+
+.choice-btn {
+    font-size: 2rem;
+    margin: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.choice-btn:hover {
+    transform: scale(1.1);
+}
+.choice-btn:active {
+    transform: scale(0.8);
+}
+.fas:hover {
+    transform: scale(2);
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+}
+.choice-btn i {
+    font-size: 3rem;
+    transition: all 0.3s ease;
+}
+
+.choice-btn:active i {
+    transform: scale(1.2);
+}
+.animate-text {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: text 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes text {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
