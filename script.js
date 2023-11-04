@@ -31,16 +31,18 @@ function determineWinner(userChoice, computerChoice) {
         return "Computer wins!";
     }
 }
-
+let choiceMade = false;
 function makeChoice(userChoice) {
     const computerChoice = getComputerChoice();
     const result = determineWinner(userChoice, computerChoice);
     // document.getElementById("result").innerText = `Computer chose ${computerChoice}. ${result}`;
     const resultElement = document.getElementById("result");
+    
     // Add animation
     resultElement.classList.add("animate-text");
     resultElement.innerText = `Computer chose ${computerChoice}. ${result}`;
     // Remove the animate-text class after a short delay to allow the animation to play again
+   
     setTimeout(() => {
         resultElement.classList.remove("animate-text");
         // Re-enable buttons after a short delay
