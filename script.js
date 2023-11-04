@@ -24,8 +24,10 @@ function determineWinner(userChoice, computerChoice) {
     if ((userChoice === "rock" && computerChoice === "scissors") ||
         (userChoice === "paper" && computerChoice === "rock") ||
         (userChoice === "scissors" && computerChoice === "paper")) {
-        return "You win!";
+        handleWin()
+            return "You win!";
     } else {
+        handleLoss()
         return "Computer wins!";
     }
 }
@@ -41,10 +43,19 @@ function makeChoice(userChoice) {
     // Remove the animate-text class after a short delay to allow the animation to play again
     setTimeout(() => {
         resultElement.classList.remove("animate-text");
+        // Re-enable buttons after a short delay
+        document.getElementById("rock").disabled = false;
+        document.getElementById("paper").disabled = false;
+        document.getElementById("scissors").disabled = false;
     }, 600);
 }
 const backgroundMusic = document.getElementById('background-music');
 const playPauseButton = document.getElementById('play-pause-button');
+const winCountElement = document.getElementById('win-count');
+const lossCountElement = document.getElementById('loss-count');
+
+let winCount = 0;
+let lossCount = 0;
 
 playPauseButton.addEventListener('click', () => {
     if (backgroundMusic.paused) {
@@ -54,4 +65,25 @@ playPauseButton.addEventListener('click', () => {
         backgroundMusic.pause();
         playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
     }
+});
+// Function to handle win event
+function handleWin() {
+    winCount++;
+    winCountElement.textContent = winCount;
+}
+
+// Function to handle loss event
+function handleLoss() {
+    lossCount++;
+    lossCountElement.textContent = lossCount;
+}
+// Event listeners for win and loss events
+document.getElementById("rock").addEventListener("click", function () {
+    makeChoice("rock");
+});
+document.getElementById("paper").addEventListener("click", function () {
+    makeChoice("paper");
+});
+document.getElementById("scissors").addEventListener("click", function () {
+    makeChoice("scissors");
 });
